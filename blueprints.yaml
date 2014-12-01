@@ -1,0 +1,40 @@
+name: Featherlight
+version: 1.0.0
+description: "Featherlight is a simple [Grav](http://github.com/getgrav/grav) plugin that adds **lightbox** functionality via the jQuery plugin [Featherlight.js](http://noelboss.github.io/featherlight/)."
+icon: file-photo-o
+author:
+  name: Team Grav
+  email: devs@getgrav.org
+  url: http://getgrav.org
+homepage: https://github.com/getgrav/grav-plugin-featherlight
+demo: http://learn.getgrav.org
+keywords: featherlight, plugin, code
+bugs: https://github.com/getgrav/grav-plugin-featherlight/issues
+license: MIT
+
+form:
+  validation: strict
+  fields:
+    enabled:
+      type: toggle
+      label: Plugin status
+      hightlight: 1
+      default: 0
+      options:
+        1: Enabled
+        0: Disabled
+      validate:
+        type: bool
+
+    active:
+      type: toggle
+      label: Plugin status
+      hightlight: 1
+      default: 0
+      options:
+        1: Enabled
+        0: Disabled
+      validate:
+        type: bool
+
+
