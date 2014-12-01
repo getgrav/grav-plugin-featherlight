@@ -16,7 +16,7 @@ form:
   fields:
     enabled:
       type: toggle
-      label: Plugin status
+      label: Plugin Status
       hightlight: 1
       default: 0
       options:
@@ -27,7 +27,7 @@ form:
 
     active:
       type: toggle
-      label: Plugin status
+      label: Active
       hightlight: 1
       default: 0
       options:
