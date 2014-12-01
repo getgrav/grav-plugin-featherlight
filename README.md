@@ -79,7 +79,7 @@ This command will check your Grav install to see if your Featherlight plugin is 
 Manually updating Featherlight is pretty simple. Here is what you will need to do to get this done:
 
 * Delete the `your/site/user/plugins/featherlight` directory.
-* Downalod the new version of the Featherlight plugin from either [GitHub](https://github.com/getgrav/grav-plugin-featherlight) or [GetGrav.org](http://getgrav.org/downloads/plugins#extras).
+* Download the new version of the Featherlight plugin from either [GitHub](https://github.com/getgrav/grav-plugin-featherlight) or [GetGrav.org](http://getgrav.org/downloads/plugins#extras).
 * Unzip the zip file in `your/site/user/plugins` and rename the resulting folder to `featherlight`.
 * Clear the Grav cache. The simplest way to do this is by going to the root Grav directory in terminal and typing `bin/grav clear-cache`.
 
