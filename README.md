@@ -59,7 +59,7 @@ You can also enable globally in the `yaml`, but disable featherlighting for a pa
     ---
     title: Sample Code with Featherlight disabled
     featherlight:
-        enabled: false
+        active: false
     ---
 
 # Updating
