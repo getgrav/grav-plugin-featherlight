@@ -1,4 +1,4 @@
-# Grav Highlight Plugin
+# Grav Featherlight Plugin
 
 ![Featherlight](assets/featherlight.png)
 
