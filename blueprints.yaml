@@ -7,7 +7,6 @@ author:
   email: devs@getgrav.org
   url: http://getgrav.org
 homepage: https://github.com/getgrav/grav-plugin-featherlight
-demo: http://learn.getgrav.org
 keywords: featherlight, plugin, code, lightbox
 bugs: https://github.com/getgrav/grav-plugin-featherlight/issues
 license: MIT
