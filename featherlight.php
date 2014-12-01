@@ -15,9 +15,27 @@ class FeatherlightPlugin extends Plugin
     public static function getSubscribedEvents()
     {
         return [
-            'onPageInitialized' => ['onPageInitialized', 0],
-            'onTwigSiteVariables' => ['onTwigSiteVariables', 0]
+            'onPluginsInitialized' => ['onPluginsInitialized', 0]
         ];
+
+        return [
+
+        ];
+    }
+
+    /**
+     * Initialize configuration
+     */
+    public function onPluginsInitialized()
+    {
+        if ($this->isAdmin()) {
+            $this->active = false;
+            return;
+        }
+
+        $this->enable([
+            'onPageInitialized' => ['onPageInitialized', 0]
+        ]);
     }
 
     /**
@@ -41,6 +59,12 @@ class FeatherlightPlugin extends Plugin
         }
 
         $this->active = $this->config->get('plugins.featherlight.active') || $legacy;
+
+        if ($this->active) {
+            $this->enable([
+                'onTwigSiteVariables' => ['onTwigSiteVariables', 0]
+            ]);
+        }
     }
 
     /**
@@ -48,21 +72,19 @@ class FeatherlightPlugin extends Plugin
      */
     public function onTwigSiteVariables()
     {
-        if ($this->active) {
+        $config = $this->config->get('plugins.featherlight');
 
-            $config = $this->config->get('plugins.featherlight');
+        $init = "$(document).ready(function() {
+                    $('a[rel=\"lightbox\"]').featherlight({
+                        openSpeed: {$config['openSpeed']},
+                        closeSpeed: {$config['closeSpeed']},
+                        closeOnClick: '{$config['closeOnClick']}'
+                    });
+                 });";
 
-            $init = "$(document).ready(function() {
-                        $('a[rel=\"lightbox\"]').featherlight({
-                            openSpeed: {$config['openSpeed']},
-                            closeSpeed: {$config['closeSpeed']},
-                            closeOnClick: '{$config['closeOnClick']}'
-                        });
-                     });";
+        $this->grav['assets']->addCss('plugin://featherlight/css/featherlight.min.css');
+        $this->grav['assets']->addJs('plugin://featherlight/js/featherlight.min.js');
+        $this->grav['assets']->addInlineJs($init);
 
-            $this->grav['assets']->addCss('plugin://featherlight/css/featherlight.min.css');
-            $this->grav['assets']->addJs('plugin://featherlight/js/featherlight.min.js');
-            $this->grav['assets']->addInlineJs($init);
-        }
     }
 }

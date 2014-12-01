@@ -1,12 +1,12 @@
 {
-   "project":"grav-plugin-highlight",
+   "project":"grav-plugin-featherlight",
    "platforms":{
       "grav":{
          "nodes":{
             "plugin":[
                {
                   "source":"/",
-                  "destination":"/user/plugins/highlight"
+                  "destination":"/user/plugins/featherlight"
                }
             ]
          }
