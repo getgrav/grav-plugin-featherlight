@@ -30,6 +30,8 @@ You should now have all the plugin files under
 
 To best understand how Featherlight works, you should read through the original project [documentation](https://github.com/noelboss/featherlight/#installation).
 
+## Configuration
+
 Featherlight is **enabled** but **not active** by default.  You can change this behavior by setting `active: true` in the plugin's configuration.  Simply copy the `user/plugins/featherlight/featherlight.yaml` into `user/config/plugins/featherlight.yaml` and make your modifications.
 
 ```
