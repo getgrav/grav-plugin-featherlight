@@ -61,6 +61,24 @@ You can also enable globally in the `yaml`, but disable featherlighting for a pa
     featherlight:
         active: false
     ---
+    
+## Implementing a lightbox with Featherlight
+
+To implement a lightbox using Featherlight in Grav, you must output the proper HTML output.  Luckily Grav already takes care of this for you if you are using Grav media files.
+
+In markdown this could look something like:
+
+```
+![Sample Image](sample-image.jpg?lightbox=1024,cropResize=200,200)
+```
+
+In Twig this could look like:
+
+```
+{{ page.media['sample-image.jpg'].lightbox(1024,768).cropResize(200,200).html('Sample Image') }}
+```
+
+More details can be found in the [Grav documentation for Media functionality]("http://learn.getgrav.org/content/media#lightbox([width,-height])").
 
 # Updating
 
