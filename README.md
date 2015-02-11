@@ -78,7 +78,7 @@ In Twig this could look like:
 {{ page.media['sample-image.jpg'].lightbox(1024,768).cropResize(200,200).html('Sample Image') }}
 ```
 
-More details can be found in the [Grav documentation for Media functionality]("http://learn.getgrav.org/content/media#lightbox([width,-height])").
+More details can be found in the [Grav documentation for Media functionality](http://learn.getgrav.org/content/media).
 
 # Updating
 
