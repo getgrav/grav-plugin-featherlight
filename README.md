@@ -30,6 +30,8 @@ You should now have all the plugin files under
 
 To best understand how Featherlight works, you should read through the original project [documentation](https://github.com/noelboss/featherlight/#installation).
 
+## Configuration
+
 Featherlight is **enabled** but **not active** by default.  You can change this behavior by setting `active: true` in the plugin's configuration.  Simply copy the `user/plugins/featherlight/featherlight.yaml` into `user/config/plugins/featherlight.yaml` and make your modifications.
 
 ```
@@ -61,6 +63,24 @@ You can also enable globally in the `yaml`, but disable featherlighting for a pa
     featherlight:
         active: false
     ---
+    
+## Implementing a lightbox with Featherlight
+
+To implement a lightbox using Featherlight in Grav, you must output the proper HTML output.  Luckily Grav already takes care of this for you if you are using Grav media files.
+
+In markdown this could look something like:
+
+```
+![Sample Image](sample-image.jpg?lightbox=1024,cropResize=200,200)
+```
+
+In Twig this could look like:
+
+```
+{{ page.media['sample-image.jpg'].lightbox(1024,768).cropResize(200,200).html('Sample Image') }}
+```
+
+More details can be found in the [Grav documentation for Media functionality](http://learn.getgrav.org/content/media).
 
 # Updating
 
