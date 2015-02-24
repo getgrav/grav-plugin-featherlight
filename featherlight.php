@@ -81,10 +81,10 @@ class FeatherlightPlugin extends Plugin
                         closeOnClick: '{$config['closeOnClick']}'
                     });
                  });";
-
-        $this->grav['assets']->addCss('plugin://featherlight/css/featherlight.min.css');
-        $this->grav['assets']->addJs('plugin://featherlight/js/featherlight.min.js');
-        $this->grav['assets']->addInlineJs($init);
+        $this->grav['assets']->addCss('plugin://featherlight/css/featherlight.min.css')
+            ->add('jquery', 101)
+            ->addJs('plugin://featherlight/js/featherlight.min.js')
+            ->addInlineJs($init);
 
     }
 }
