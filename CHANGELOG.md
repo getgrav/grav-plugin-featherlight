@@ -3,6 +3,7 @@
 
 1. [](#improved)
     * Updated to featherlight 1.2.3
+    * Added 'root' option to configure where featherlight is added
 
 # v1.1.0
 ## 02/19/2015

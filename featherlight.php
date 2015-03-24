@@ -78,7 +78,8 @@ class FeatherlightPlugin extends Plugin
                     $('a[rel=\"lightbox\"]').featherlight({
                         openSpeed: {$config['openSpeed']},
                         closeSpeed: {$config['closeSpeed']},
-                        closeOnClick: '{$config['closeOnClick']}'
+                        closeOnClick: '{$config['closeOnClick']}',
+                        root: '{$config['root']}'
                     });
                  });";
         $this->grav['assets']->addCss('plugin://featherlight/css/featherlight.min.css')

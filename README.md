@@ -41,6 +41,7 @@ openSpeed: 250                # open speed in ms
 closeSpeed: 250               # close speed in ms
 closeOnClick: background      # background|anywhere|false
 closeOnEsc: true              # true|false on hitting Esc key
+root: body                    # where to append featherlights
 ```
 
 You can also override any default setings from the page headers:
