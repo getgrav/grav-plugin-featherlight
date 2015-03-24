@@ -1,8 +1,14 @@
+# v1.1.1
+## 03/24/2015
+
+1. [](#improved)
+    * Updated to featherlight 1.2.3
+
 # v1.1.0
 ## 02/19/2015
 
 1. [](#improved)
-    * Updated to featherlight 1.20
+    * Updated to featherlight 1.2.0
     * Added reference for to load jQuery if needed
 
 # v1.0.3
