@@ -17,10 +17,6 @@ class FeatherlightPlugin extends Plugin
         return [
             'onPluginsInitialized' => ['onPluginsInitialized', 0]
         ];
-
-        return [
-
-        ];
     }
 
     /**
@@ -74,18 +70,36 @@ class FeatherlightPlugin extends Plugin
     {
         $config = $this->config->get('plugins.featherlight');
 
-        $init = "$(document).ready(function() {
-                    $('a[rel=\"lightbox\"]').featherlight({
-                        openSpeed: {$config['openSpeed']},
-                        closeSpeed: {$config['closeSpeed']},
-                        closeOnClick: '{$config['closeOnClick']}',
-                        root: '{$config['root']}'
-                    });
-                 });";
-        $this->grav['assets']->addCss('plugin://featherlight/css/featherlight.min.css')
-            ->add('jquery', 101)
-            ->addJs('plugin://featherlight/js/featherlight.min.js')
-            ->addInlineJs($init);
-
+        if ($config['gallery']) {
+            $init = "$(document).ready(function(){
+                $('a[rel=\"lightbox\"]').featherlightGallery({
+                    openSpeed: {$config['openSpeed']},
+                    closeSpeed: {$config['closeSpeed']},
+                    closeOnClick: '{$config['closeOnClick']}',
+                    root: '{$config['root']}'
+                });
+             });";
+             $this->grav['assets']
+                 ->addCss('plugin://featherlight/css/featherlight.min.css')
+                 ->addCss('plugin://featherlight/css/featherlight.gallery.min.css')
+                 ->add('jquery', 101)
+                 ->addJs('plugin://featherlight/js/featherlight.min.js')
+                 ->addJs('plugin://featherlight/js/featherlight.gallery.min.js')
+                 ->addInlineJs($init);
+        } else {
+            $init = "$(document).ready(function() {
+                        $('a[rel=\"lightbox\"]').featherlight({
+                            openSpeed: {$config['openSpeed']},
+                            closeSpeed: {$config['closeSpeed']},
+                            closeOnClick: '{$config['closeOnClick']}',
+                            root: '{$config['root']}'
+                        });
+                     });";
+            $this->grav['assets']
+                ->addCss('plugin://featherlight/css/featherlight.min.css')
+                ->add('jquery', 101)
+                ->addJs('plugin://featherlight/js/featherlight.min.js')
+                ->addInlineJs($init);
+        }
     }
 }
