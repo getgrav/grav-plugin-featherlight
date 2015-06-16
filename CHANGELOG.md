@@ -1,3 +1,10 @@
+# v1.2.0
+## 06/16/2015
+
+1. [](#improved)
+    * Updated to featherlight 1.3.2
+    * Added Gallery support
+
 # v1.1.0
 ## 03/24/2015
 

@@ -72,7 +72,7 @@ To implement a lightbox using Featherlight in Grav, you must output the proper H
 In markdown this could look something like:
 
 ```
-![Sample Image](sample-image.jpg?lightbox=1024,cropResize=200,200)
+![Sample Image](sample-image.jpg?lightbox=1024&cropResize=200,200)
 ```
 
 In Twig this could look like:
