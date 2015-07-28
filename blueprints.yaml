@@ -35,5 +35,59 @@ form:
         0: Disabled
       validate:
         type: bool
+      help: Activate on all pages. You can override this setting on a page basis
 
+    gallery:
+      type: toggle
+      label: Gallery
+      hightlight: 1
+      default: 0
+      options:
+        1: Enabled
+        0: Disabled
+      validate:
+        type: bool
+      help: Enable/disable the lightbox gallery extension
 
+    openSpeed:
+      type: text
+      size: medium
+      label: Open Speed
+      default: '250'
+      help: Open Speed in ms
+
+    closeSpeed:
+      type: text
+      size: medium
+      label: Close Speed
+      default: '250'
+      help: Close Speed in ms
+
+    closeOnClick:
+      type: select
+      size: medium
+      classes: fancy
+      label: Close on Click
+      options:
+        background: background
+        anywhere: anywhere
+        'false': 'false'
+
+    closeOnEsc:
+      type: toggle
+      label: Close on Esc
+      hightlight: 1
+      default: 0
+      options:
+        1: Enabled
+        0: Disabled
+      validate:
+        type: bool
+      help: Close the lightbox on hitting the Esc key
+
+    root:
+      type: text
+      size: medium
+      label: Root
+      default: 'body'
+      help: Where to append featherlights
