@@ -16,12 +16,12 @@ form:
   fields:
     enabled:
       type: toggle
-      label: Plugin Status
+      label: PLUGIN_ADMIN.PLUGIN_STATUS
       hightlight: 1
       default: 0
       options:
-        1: Enabled
-        0: Disabled
+        1: PLUGIN_ADMIN.ENABLED
+        0: PLUGIN_ADMIN.DISABLED
       validate:
         type: bool
 
@@ -31,8 +31,8 @@ form:
       hightlight: 1
       default: 0
       options:
-        1: Enabled
-        0: Disabled
+        1: PLUGIN_ADMIN.ENABLED
+        0: PLUGIN_ADMIN.DISABLED
       validate:
         type: bool
       help: Activate on all pages. You can override this setting on a page basis
@@ -43,8 +43,8 @@ form:
       hightlight: 1
       default: 0
       options:
-        1: Enabled
-        0: Disabled
+        1: PLUGIN_ADMIN.ENABLED
+        0: PLUGIN_ADMIN.DISABLED
       validate:
         type: bool
       help: Enable/disable the lightbox gallery extension
@@ -79,8 +79,8 @@ form:
       hightlight: 1
       default: 0
       options:
-        1: Enabled
-        0: Disabled
+        1: PLUGIN_ADMIN.ENABLED
+        0: PLUGIN_ADMIN.DISABLED
       validate:
         type: bool
       help: Close the lightbox on hitting the Esc key
