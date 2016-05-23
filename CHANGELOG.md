@@ -1,3 +1,10 @@
+# v1.3.1
+## 09/23/2016
+
+1. [](#improved)
+    * Use common language strings
+    * Set active by default
+
 # v1.3.0
 ## 08/25/2015
 
