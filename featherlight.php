@@ -90,9 +90,8 @@ class FeatherlightPlugin extends Plugin
     }
 
     protected function getInitJs($config) {
-        $pluginName = $config['gallery'] ? 'featherlightGallery' : 'featherlight';
-
         $asset = $this->grav['locator']->findResource($config['initTemplate'], false);
+
         $init = file_get_contents(ROOT_DIR . $asset);
 
         $init = str_replace(
