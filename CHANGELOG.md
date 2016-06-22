@@ -1,5 +1,13 @@
+# v1.4.0
+## 06/xx/2016
+
+1. [](#new)
+    * Allow to have a custom initialization javascript file
+1. [](#improved)
+    * Moved initialization to its own javascript file instead of inlined in the PHP code
+
 # v1.3.1
-## 09/23/2016
+## 05/23/2016
 
 1. [](#improved)
     * Use common language strings
