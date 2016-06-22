@@ -91,3 +91,11 @@ form:
       label: Root
       default: 'body'
       help: Where to append featherlights
+
+    initTemplate:
+      type: text
+      size: medium
+      label: Init script
+      default: 'plugin://featherlight/js/featherlight.init.js'
+      placeholder: 'plugin://featherlight/js/featherlight.init.js'
+      help: Path to template file for JS init script

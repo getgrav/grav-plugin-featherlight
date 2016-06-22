@@ -42,6 +42,7 @@ closeSpeed: 250               # close speed in ms
 closeOnClick: background      # background|anywhere|false
 closeOnEsc: true              # true|false on hitting Esc key
 root: body                    # where to append featherlights
+initTemplate: plugin://featherlight/js/featherlight.init.js
 ```
 
 You can also override any default setings from the page headers:
@@ -82,6 +83,28 @@ In Twig this could look like:
 ```
 
 More details can be found in the [Grav documentation for Media functionality](http://learn.getgrav.org/content/media).
+
+## Adding captions to the lightbox
+
+Image captions within the lightbox do not come out of the box with featherlight. But as the author described in his [wiki](https://github.com/noelboss/featherlight/wiki/Gallery:-showing-a-caption) it's quite easy to add.
+
+Per default we use a this script when initializing the plugin: [js/featherlight.init.js](js/featherlight.init.js). You can copy it to the "user" folder, change the initTemplate setting to `user://js/featherlight.init.js` and add a afterContent callback like this:
+
+    $(document).ready(function(){
+        $('a[rel="lightbox"]').{pluginName}({
+            openSpeed: {openSpeed},
+            closeSpeed: {closeSpeed},
+            closeOnClick: '{closeOnClick}',
+            root: '{root}',
+            afterContent: function() {
+                var caption = this.$currentTarget.find('img').attr('alt');
+                this.$instance.find('.caption').remove();
+                $('<div class="caption">').text(caption).appendTo(this.$instance.find('.featherlight-content'));
+            }
+        });
+    });
+
+The placeholders `{pluginName}`, `{openSpeed}`, `{closeSpeed}` and `{root}` will be replaced when processing this file.
 
 # Updating
 
