@@ -37,7 +37,7 @@ form:
         type: bool
       help: Activate on all pages. You can override this setting on a page basis
 
-    require:
+    requirejs:
       type: toggle
       label: RequireJS
       hightlight: 1

@@ -88,23 +88,23 @@ class FeatherlightPlugin extends Plugin
             $this->grav['assets']
                 ->addCss('plugin://featherlight/css/featherlight.min.css')
                 ->addInlineJs($init);
-              } elseif ($config['gallery']) {
-                  $init = $this->getInitJs($config);
-                  $this->grav['assets']
-                       ->addCss('plugin://featherlight/css/featherlight.min.css')
-                       ->addCss('plugin://featherlight/css/featherlight.gallery.min.css')
-                       ->add('jquery', 101)
-                       ->addJs('plugin://featherlight/js/featherlight.min.js')
-                       ->addJs('plugin://featherlight/js/featherlight.gallery.min.js')
-                       ->addInlineJs($init);
-              } else {
-                  $init = $this->getInitJs($config);
-                  $this->grav['assets']
-                      ->addCss('plugin://featherlight/css/featherlight.min.css')
-                      ->add('jquery', 101)
-                      ->addJs('plugin://featherlight/js/featherlight.min.js')
-                      ->addInlineJs($init);
-              }
+        } elseif ($config['gallery']) {
+            $init = $this->getInitJs($config);
+            $this->grav['assets']
+                 ->addCss('plugin://featherlight/css/featherlight.min.css')
+                 ->addCss('plugin://featherlight/css/featherlight.gallery.min.css')
+                 ->add('jquery', 101)
+                 ->addJs('plugin://featherlight/js/featherlight.min.js')
+                 ->addJs('plugin://featherlight/js/featherlight.gallery.min.js')
+                 ->addInlineJs($init);
+        } else {
+            $init = $this->getInitJs($config);
+            $this->grav['assets']
+                ->addCss('plugin://featherlight/css/featherlight.min.css')
+                ->add('jquery', 101)
+                ->addJs('plugin://featherlight/js/featherlight.min.js')
+                ->addInlineJs($init);
+        }
     }
 
     protected function getInitJs($config) {
