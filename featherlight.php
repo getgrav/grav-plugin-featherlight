@@ -113,12 +113,13 @@ class FeatherlightPlugin extends Plugin
         $init = file_get_contents(ROOT_DIR . $asset);
 
         $init = str_replace(
-            array('{pluginName}', '{openSpeed}', '{closeSpeed}', '{closeOnClick}', '{root}'),
+            array('{pluginName}', '{openSpeed}', '{closeSpeed}', '{closeOnClick}', '{closeOnEsc}', '{root}'),
             array(
                 $config['gallery'] ? 'featherlightGallery' : 'featherlight',
                 $config['openSpeed'],
                 $config['closeSpeed'],
                 $config['closeOnClick'],
+                $config['closeOnEsc'],
                 $config['root']
             ),
             $init
