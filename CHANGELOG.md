@@ -1,3 +1,11 @@
+# v1.4.1
+## 06/30/2016
+
+1. [](#new)
+    * Allow AMD module output for RequireJS
+1. [](#improved)
+    * Fixed closeOnEsc
+
 # v1.4.0
 ## 06/xx/2016
 

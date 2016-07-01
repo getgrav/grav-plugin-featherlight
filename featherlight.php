@@ -70,23 +70,41 @@ class FeatherlightPlugin extends Plugin
     {
         $config = $this->config->get('plugins.featherlight');
 
-        if ($config['gallery']) {
-            $init = $this->getInitJs($config);
-            $this->grav['assets']
-                 ->addCss('plugin://featherlight/css/featherlight.min.css')
-                 ->addCss('plugin://featherlight/css/featherlight.gallery.min.css')
-                 ->add('jquery', 101)
-                 ->addJs('plugin://featherlight/js/featherlight.min.js')
-                 ->addJs('plugin://featherlight/js/featherlight.gallery.min.js')
-                 ->addInlineJs($init);
-        } else {
-            $init = $this->getInitJs($config);
+        if ($config['requirejs']) {
+            $init = "define(\"featherlight\",['jquery', 'plugin/featherlight/js/featherlight.min' ], function($){
+                var Lightbox = {
+                  Init : function() {
+                    $('a[rel=\"lightbox\"]').featherlight({
+                      openSpeed: {$config['openSpeed']},
+                      closeSpeed: {$config['closeSpeed']},
+                      closeOnClick: '{$config['closeOnClick']}',
+                      closeOnEsc:   '{$config['closeOnEsc']}',
+                      root: '{$config['root']}'
+                    });
+                  }
+                };
+                return Lightbox;
+            });";
             $this->grav['assets']
                 ->addCss('plugin://featherlight/css/featherlight.min.css')
-                ->add('jquery', 101)
-                ->addJs('plugin://featherlight/js/featherlight.min.js')
                 ->addInlineJs($init);
-        }
+              } elseif ($config['gallery']) {
+                  $init = $this->getInitJs($config);
+                  $this->grav['assets']
+                       ->addCss('plugin://featherlight/css/featherlight.min.css')
+                       ->addCss('plugin://featherlight/css/featherlight.gallery.min.css')
+                       ->add('jquery', 101)
+                       ->addJs('plugin://featherlight/js/featherlight.min.js')
+                       ->addJs('plugin://featherlight/js/featherlight.gallery.min.js')
+                       ->addJs('plugin://featherlight/js/featherlight.init.js');
+              } else {
+                  $init = $this->getInitJs($config);
+                  $this->grav['assets']
+                      ->addCss('plugin://featherlight/css/featherlight.min.css')
+                      ->add('jquery', 101)
+                      ->addJs('plugin://featherlight/js/featherlight.min.js')
+                      ->addJs('plugin://featherlight/js/featherlight.init.js');
+              }
     }
 
     protected function getInitJs($config) {
