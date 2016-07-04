@@ -1,5 +1,5 @@
 # v1.4.0
-## 06/30/2016
+## 07/xx/2016
 
 1. [](#new)
     * Allow to have a custom initialization javascript file
