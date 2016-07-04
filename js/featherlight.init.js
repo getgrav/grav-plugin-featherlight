@@ -3,6 +3,7 @@ $(document).ready(function(){
         openSpeed: {openSpeed},
         closeSpeed: {closeSpeed},
         closeOnClick: '{closeOnClick}',
+        closeOnEsc: '{closeOnEsc}',
         root: '{root}'
     });
 });

@@ -70,7 +70,25 @@ class FeatherlightPlugin extends Plugin
     {
         $config = $this->config->get('plugins.featherlight');
 
-        if ($config['gallery']) {
+        if ($config['requirejs']) {
+            $init = "define(\"featherlight\",['jquery', 'plugin/featherlight/js/featherlight.min' ], function($){
+                var Lightbox = {
+                  Init : function() {
+                    $('a[rel=\"lightbox\"]').featherlight({
+                      openSpeed: {$config['openSpeed']},
+                      closeSpeed: {$config['closeSpeed']},
+                      closeOnClick: '{$config['closeOnClick']}',
+                      closeOnEsc:   '{$config['closeOnEsc']}',
+                      root: '{$config['root']}'
+                    });
+                  }
+                };
+                return Lightbox;
+            });";
+            $this->grav['assets']
+                ->addCss('plugin://featherlight/css/featherlight.min.css')
+                ->addInlineJs($init);
+        } elseif ($config['gallery']) {
             $init = $this->getInitJs($config);
             $this->grav['assets']
                  ->addCss('plugin://featherlight/css/featherlight.min.css')
@@ -95,12 +113,13 @@ class FeatherlightPlugin extends Plugin
         $init = file_get_contents(ROOT_DIR . $asset);
 
         $init = str_replace(
-            array('{pluginName}', '{openSpeed}', '{closeSpeed}', '{closeOnClick}', '{root}'),
+            array('{pluginName}', '{openSpeed}', '{closeSpeed}', '{closeOnClick}', '{closeOnEsc}', '{root}'),
             array(
                 $config['gallery'] ? 'featherlightGallery' : 'featherlight',
                 $config['openSpeed'],
                 $config['closeSpeed'],
                 $config['closeOnClick'],
+                $config['closeOnEsc'],
                 $config['root']
             ),
             $init
