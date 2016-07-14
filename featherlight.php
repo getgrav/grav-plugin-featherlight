@@ -70,16 +70,27 @@ class FeatherlightPlugin extends Plugin
     {
         $config = $this->config->get('plugins.featherlight');
 
-        if ($config['gallery']) {
-            $init = "$(document).ready(function(){
-                $('a[rel=\"lightbox\"]').featherlightGallery({
-                    openSpeed: {$config['openSpeed']},
-                    closeSpeed: {$config['closeSpeed']},
-                    closeOnClick: '{$config['closeOnClick']}',
-                    root: '{$config['root']}'
-                });
-             });";
-             $this->grav['assets']
+        if ($config['requirejs']) {
+            $init = "define(\"featherlight\",['jquery', 'plugin/featherlight/js/featherlight.min' ], function($){
+                var Lightbox = {
+                  Init : function() {
+                    $('a[rel=\"lightbox\"]').featherlight({
+                      openSpeed: {$config['openSpeed']},
+                      closeSpeed: {$config['closeSpeed']},
+                      closeOnClick: '{$config['closeOnClick']}',
+                      closeOnEsc:   '{$config['closeOnEsc']}',
+                      root: '{$config['root']}'
+                    });
+                  }
+                };
+                return Lightbox;
+            });";
+            $this->grav['assets']
+                ->addCss('plugin://featherlight/css/featherlight.min.css')
+                ->addInlineJs($init);
+        } elseif ($config['gallery']) {
+            $init = $this->getInitJs($config);
+            $this->grav['assets']
                  ->addCss('plugin://featherlight/css/featherlight.min.css')
                  ->addCss('plugin://featherlight/css/featherlight.gallery.min.css')
                  ->add('jquery', 101)
@@ -87,19 +98,33 @@ class FeatherlightPlugin extends Plugin
                  ->addJs('plugin://featherlight/js/featherlight.gallery.min.js')
                  ->addInlineJs($init);
         } else {
-            $init = "$(document).ready(function() {
-                        $('a[rel=\"lightbox\"]').featherlight({
-                            openSpeed: {$config['openSpeed']},
-                            closeSpeed: {$config['closeSpeed']},
-                            closeOnClick: '{$config['closeOnClick']}',
-                            root: '{$config['root']}'
-                        });
-                     });";
+            $init = $this->getInitJs($config);
             $this->grav['assets']
                 ->addCss('plugin://featherlight/css/featherlight.min.css')
                 ->add('jquery', 101)
                 ->addJs('plugin://featherlight/js/featherlight.min.js')
                 ->addInlineJs($init);
         }
+    }
+
+    protected function getInitJs($config) {
+        $asset = $this->grav['locator']->findResource($config['initTemplate'], false);
+
+        $init = file_get_contents(ROOT_DIR . $asset);
+
+        $init = str_replace(
+            array('{pluginName}', '{openSpeed}', '{closeSpeed}', '{closeOnClick}', '{closeOnEsc}', '{root}'),
+            array(
+                $config['gallery'] ? 'featherlightGallery' : 'featherlight',
+                $config['openSpeed'],
+                $config['closeSpeed'],
+                $config['closeOnClick'],
+                $config['closeOnEsc'],
+                $config['root']
+            ),
+            $init
+        );
+
+        return $init;
     }
 }

@@ -1,5 +1,15 @@
+# v1.4.0
+## 07/14/2016
+
+1. [](#new)
+    * Allow to have a custom initialization javascript file
+    * Allow AMD module output for RequireJS
+1. [](#improved)
+    * Moved initialization to its own javascript file instead of inlined in the PHP code
+    * Fixed closeOnEsc
+
 # v1.3.1
-## 09/23/2016
+## 05/23/2016
 
 1. [](#improved)
     * Use common language strings

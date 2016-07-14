@@ -1,8 +1,10 @@
 enabled: true                 # global enable/disable the entire plugin
 active: true                  # if the plugin is active and JS/CSS should be loaded
 gallery: false                # enable/disable the gallery extension
+requirejs: false              # output to an AMD module
 openSpeed: 250                # open speed in ms
 closeSpeed: 250               # close speed in ms
 closeOnClick: background      # background|anywhere|false
 closeOnEsc: true              # true|false on hitting Esc key
 root: body                    # where to append featherlights
+initTemplate: plugin://featherlight/js/featherlight.init.js

@@ -1,5 +1,5 @@
 name: Featherlight
-version: 1.3.1
+version: 1.4.0
 description: "Featherlight is a simple [Grav](http://github.com/getgrav/grav) plugin that adds **lightbox** functionality via the jQuery plugin [Featherlight.js](http://noelboss.github.io/featherlight/)."
 icon: file-photo-o
 author:
@@ -36,6 +36,18 @@ form:
       validate:
         type: bool
       help: Activate on all pages. You can override this setting on a page basis
+
+    requirejs:
+      type: toggle
+      label: RequireJS
+      hightlight: 1
+      default: 0
+      options:
+        1: PLUGIN_ADMIN.ENABLED
+        0: PLUGIN_ADMIN.DISABLED
+      validate:
+        type: bool
+      help: Outputs a AMD module to use with RequireJS
 
     gallery:
       type: toggle
@@ -91,3 +103,11 @@ form:
       label: Root
       default: 'body'
       help: Where to append featherlights
+
+    initTemplate:
+      type: text
+      size: medium
+      label: Init script
+      default: 'plugin://featherlight/js/featherlight.init.js'
+      placeholder: 'plugin://featherlight/js/featherlight.init.js'
+      help: Path to template file for JS init script

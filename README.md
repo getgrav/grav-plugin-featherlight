@@ -42,6 +42,7 @@ closeSpeed: 250               # close speed in ms
 closeOnClick: background      # background|anywhere|false
 closeOnEsc: true              # true|false on hitting Esc key
 root: body                    # where to append featherlights
+initTemplate: plugin://featherlight/js/featherlight.init.js
 ```
 
 You can also override any default setings from the page headers:
@@ -64,7 +65,7 @@ You can also enable globally in the `yaml`, but disable featherlighting for a pa
     featherlight:
         active: false
     ---
-    
+
 ## Implementing a lightbox with Featherlight
 
 To implement a lightbox using Featherlight in Grav, you must output the proper HTML output.  Luckily Grav already takes care of this for you if you are using Grav media files.
@@ -82,6 +83,58 @@ In Twig this could look like:
 ```
 
 More details can be found in the [Grav documentation for Media functionality](http://learn.getgrav.org/content/media).
+
+## Adding captions to the lightbox
+
+Image captions within the lightbox do not come out of the box with featherlight. But as the author described in his [wiki](https://github.com/noelboss/featherlight/wiki/Gallery:-showing-a-caption) it's quite easy to add.
+
+Per default we use a this script when initializing the plugin: [js/featherlight.init.js](js/featherlight.init.js). You can copy it to the "user" folder, change the initTemplate setting to `user://js/featherlight.init.js` and add a afterContent callback like this:
+
+    $(document).ready(function(){
+        $('a[rel="lightbox"]').{pluginName}({
+            openSpeed: {openSpeed},
+            closeSpeed: {closeSpeed},
+            closeOnClick: '{closeOnClick}',
+            closeOnEsc: '{closeOnEsc}',
+            root: '{root}',
+            afterContent: function() {
+                var caption = this.$currentTarget.find('img').attr('alt');
+                this.$instance.find('.caption').remove();
+                $('<div class="caption">').text(caption).appendTo(this.$instance.find('.featherlight-content'));
+            }
+        });
+    });
+
+The placeholders `{pluginName}`, `{openSpeed}`, `{closeSpeed}` and `{root}` will be replaced when processing this file.
+
+## Using AMD modules with RequireJS
+
+Must update to `v1.4.1`. When you select `RequireJS` from the config, this plugin will inlineJS an AMD module called `featherlight` that you can use with RequireJS. If you call this module directly, it will work, however if you decide to disable this plugin RequireJS will fail. As such, if you include the module below it will see if `featherlight` exists and include it if it does.
+
+```
+define(['jquery'], function($){
+  var Lightbox = {
+    Init : function() {
+    if (require.specified('featherlight')) {
+      require( [ 'featherlight' ], function (Featherlight) {
+        Featherlight.Init();
+      });
+      }
+    }
+  };
+  return Lightbox;
+});
+```
+
+Also set your main.js file to include this line:
+
+```
+paths: {
+    ...
+    plugin: '/user/plugins',
+    ...
+},
+```
 
 # Updating
 
