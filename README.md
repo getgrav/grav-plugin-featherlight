@@ -41,6 +41,7 @@ openSpeed: 250                # open speed in ms
 closeSpeed: 250               # close speed in ms
 closeOnClick: background      # background|anywhere|false
 closeOnEsc: true              # true|false on hitting Esc key
+gallery: false                # adds previous and next buttons
 root: body                    # where to append featherlights
 initTemplate: plugin://featherlight/js/featherlight.init.js
 ```
