@@ -1,8 +1,8 @@
-# v1.4.0
+# v1.5.0
 ## 07/xx/2017
 
 1. [](#new)
-    * Update to Featherlight 1.7.1
+    * Update to Featherlight 1.7.7
 
 # v1.4.0
 ## 07/14/2016
