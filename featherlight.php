@@ -93,7 +93,7 @@ class FeatherlightPlugin extends Plugin
             $this->grav['assets']
                  ->addCss('plugin://featherlight/css/featherlight.min.css')
                  ->addCss('plugin://featherlight/css/featherlight.gallery.min.css')
-                 ->add('jquery', 101)
+                 //->add('jquery', 101)
                  ->addJs('plugin://featherlight/js/featherlight.min.js')
                  ->addJs('plugin://featherlight/js/featherlight.gallery.min.js')
                  ->addInlineJs($init);
@@ -101,7 +101,7 @@ class FeatherlightPlugin extends Plugin
             $init = $this->getInitJs($config);
             $this->grav['assets']
                 ->addCss('plugin://featherlight/css/featherlight.min.css')
-                ->add('jquery', 101)
+                //->add('jquery', 101)
                 ->addJs('plugin://featherlight/js/featherlight.min.js')
                 ->addInlineJs($init);
         }
