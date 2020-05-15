@@ -1,3 +1,4 @@
+document.addEventListener('DOMContentLoaded', function() {
 $(document).ready(function(){
     $('a[rel="lightbox"]').{pluginName}({
         openSpeed: {openSpeed},
@@ -7,3 +8,4 @@ $(document).ready(function(){
         root: '{root}'
     });
 });
+}, false);
