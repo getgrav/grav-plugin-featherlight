@@ -2,7 +2,7 @@
 
 ![Featherlight](assets/featherlight.png)
 
-`featherlight` is a simple [Grav](http://github.com/getgrav/grav) plugin that adds **lightbox** functionality via the jQuery plugin [Featherlight.js](http://noelboss.github.io/featherlight/).
+`featherlight` is a simple [Grav](https://github.com/getgrav/grav) plugin that adds **lightbox** functionality via the jQuery plugin [Featherlight.js](https://noelboss.github.io/featherlight/).
 
 # Installation
 
@@ -10,7 +10,7 @@ Installing the Featherlight plugin can be done in one of two ways. Our GPM (Grav
 
 ## GPM Installation (Preferred)
 
-The simplest way to install this plugin is via the [Grav Package Manager (GPM)](http://learn.getgrav.org/advanced/grav-gpm) through your system's Terminal (also called the command line).  From the root of your Grav install type:
+The simplest way to install this plugin is via the [Grav Package Manager (GPM)](https://learn.getgrav.org/advanced/grav-gpm) through your system's Terminal (also called the command line).  From the root of your Grav install type:
 
     bin/gpm install featherlight
 
@@ -18,13 +18,13 @@ This will install the Featherlight plugin into your `/user/plugins` directory wi
 
 ## Manual Installation
 
-To install this plugin, just download the zip version of this repository and unzip it under `/your/site/grav/user/plugins`. Then, rename the folder to `featherlight`. You can find these files either on [GitHub](https://github.com/getgrav/grav-plugin-featherlight) or via [GetGrav.org](http://getgrav.org/downloads/plugins#extras).
+To install this plugin, just download the zip version of this repository and unzip it under `/your/site/grav/user/plugins`. Then, rename the folder to `featherlight`. You can find these files either on [GitHub](https://github.com/getgrav/grav-plugin-featherlight) or via [GetGrav.org](https://getgrav.org/downloads/plugins#extras).
 
 You should now have all the plugin files under
 
     /your/site/grav/user/plugins/featherlight
 
->> NOTE: This plugin is a modular component for Grav which requires [Grav](http://github.com/getgrav/grav) to function
+>> NOTE: This plugin is a modular component for Grav which requires [Grav](https://github.com/getgrav/grav) to function
 
 # Usage
 
@@ -34,7 +34,7 @@ To best understand how Featherlight works, you should read through the original 
 
 Featherlight is **enabled** but **not active** by default.  You can change this behavior by setting `active: true` in the plugin's configuration.  Simply copy the `user/plugins/featherlight/featherlight.yaml` into `user/config/plugins/featherlight.yaml` and make your modifications.
 
-```
+```yaml
 enabled: true                 # global enable/disable the entire plugin
 active: false                 # if the plugin is active and JS/CSS should be loaded
 openSpeed: 250                # open speed in ms
@@ -49,6 +49,7 @@ You can also override any default setings from the page headers:
 
 eg:
 
+```yaml
     ---
     title: Sample Code With Custom Settings
     featherlight:
@@ -56,15 +57,17 @@ eg:
         openSpeed: 100
         closeSpeed: 100
     ---
-
+```
 
 You can also enable globally in the `yaml`, but disable featherlighting for a particular page:
 
+```yaml
     ---
     title: Sample Code with Featherlight disabled
     featherlight:
         active: false
     ---
+```
 
 ## Implementing a lightbox with Featherlight
 
@@ -72,17 +75,19 @@ To implement a lightbox using Featherlight in Grav, you must output the proper H
 
 In markdown this could look something like:
 
-```
+```md
 ![Sample Image](sample-image.jpg?lightbox=1024&cropResize=200,200)
 ```
 
 In Twig this could look like:
 
-```
+```twig
 {{ page.media['sample-image.jpg'].lightbox(1024,768).cropResize(200,200).html('Sample Image') }}
 ```
 
-More details can be found in the [Grav documentation for Media functionality](http://learn.getgrav.org/content/media).
+More details can be found in the [Grav documentation for Media functionality](https://learn.getgrav.org/content/media).
+
+>> NOTE: Featherlight does not support [`srcset`](https://github.com/noelboss/featherlight/issues/337).
 
 ## Adding captions to the lightbox
 
@@ -90,6 +95,7 @@ Image captions within the lightbox do not come out of the box with featherlight.
 
 Per default we use a this script when initializing the plugin: [js/featherlight.init.js](js/featherlight.init.js). You can copy it to the "user" folder, change the initTemplate setting to `user://js/featherlight.init.js` and add a afterContent callback like this:
 
+```js
     $(document).ready(function(){
         $('a[rel="lightbox"]').{pluginName}({
             openSpeed: {openSpeed},
@@ -104,6 +110,7 @@ Per default we use a this script when initializing the plugin: [js/featherlight.
             }
         });
     });
+```
 
 The placeholders `{pluginName}`, `{openSpeed}`, `{closeSpeed}` and `{root}` will be replaced when processing this file.
 
@@ -111,7 +118,7 @@ The placeholders `{pluginName}`, `{openSpeed}`, `{closeSpeed}` and `{root}` will
 
 Must update to `v1.4.1`. When you select `RequireJS` from the config, this plugin will inlineJS an AMD module called `featherlight` that you can use with RequireJS. If you call this module directly, it will work, however if you decide to disable this plugin RequireJS will fail. As such, if you include the module below it will see if `featherlight` exists and include it if it does.
 
-```
+```js
 define(['jquery'], function($){
   var Lightbox = {
     Init : function() {
@@ -128,7 +135,7 @@ define(['jquery'], function($){
 
 Also set your main.js file to include this line:
 
-```
+```js
 paths: {
     ...
     plugin: '/user/plugins',
@@ -142,7 +149,7 @@ As development for the Featherlight plugin continues, new versions may become av
 
 ## GPM Update (Preferred)
 
-The simplest way to update this plugin is via the [Grav Package Manager (GPM)](http://learn.getgrav.org/advanced/grav-gpm). You can do this with this by navigating to the root directory of your Grav install using your system's Terminal (also called command line) and typing the following:
+The simplest way to update this plugin is via the [Grav Package Manager (GPM)](https://learn.getgrav.org/advanced/grav-gpm). You can do this with this by navigating to the root directory of your Grav install using your system's Terminal (also called command line) and typing the following:
 
     bin/gpm update featherlight
 
@@ -153,7 +160,7 @@ This command will check your Grav install to see if your Featherlight plugin is 
 Manually updating Featherlight is pretty simple. Here is what you will need to do to get this done:
 
 * Delete the `your/site/user/plugins/featherlight` directory.
-* Download the new version of the Featherlight plugin from either [GitHub](https://github.com/getgrav/grav-plugin-featherlight) or [GetGrav.org](http://getgrav.org/downloads/plugins#extras).
+* Download the new version of the Featherlight plugin from either [GitHub](https://github.com/getgrav/grav-plugin-featherlight) or [GetGrav.org](https://getgrav.org/downloads/plugins#extras).
 * Unzip the zip file in `your/site/user/plugins` and rename the resulting folder to `featherlight`.
 * Clear the Grav cache. The simplest way to do this is by going to the root Grav directory in terminal and typing `bin/grav clear-cache`.
 
